@@ -22,4 +22,4 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        path: bin/Release/net10.0-windows10.0.19041.0/win-x64/publish/Cashier.exe
+        path: bin/Release/net10.0-windows10.0.19041.0/win-x64/publish/CashierExternal.exe
