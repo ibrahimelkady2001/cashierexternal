@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CashierExternal.AddOrder"  xmlns:appMaker="clr-namespace:Cashier"
+             Title="AddOrder">
+   <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout 
+            Spacing="20" 
+            Padding="20"
+            VerticalOptions="FillAndExpand">
+        <!-- Total Price Label -->
+        <StackLayout Orientation="Horizontal">
+  <Label 
+            
+                Text="اجمالي:"
+                FontSize="20"
+                HorizontalOptions="Center"
+                TextColor="#4CAF50" />
+                <Label VerticalTextAlignment="Center" FontSize="30" FontAttributes="Bold" x:Name="Total" Text="0"></Label>
+        </StackLayout>
+          
+
+            <!-- Barcode Input and Scan Button -->
+            <StackLayout Orientation="Horizontal" Spacing="10">
+                <Entry 
+                    x:Name="BarcodeEntry"
+                    Placeholder="Enter Barcode Number"
+                    FontSize="16"
+                    Keyboard="Numeric"
+                    HeightRequest="50" ReturnType="Go" 
+                    HorizontalOptions="FillAndExpand" />
+
+                <ImageButton  
+                    Source="barcode"
+                    BackgroundColor="Transparent"
+                    HeightRequest="50"
+                    WidthRequest="50"
+                    Clicked="OnBarcodeScanClicked" />
+            </StackLayout>
+  <StackLayout Orientation="Horizontal" Spacing="10">
+                <Label 
+                    
+                    Text="الموظف"
+                    FontSize="16"
+                  
+                    HeightRequest="50" 
+                    HorizontalOptions="FillAndExpand" />
+
+                <Picker Title="الموظف"  FontSize="16" BackgroundColor ="Orange" x:Name="EmployeePicker"
+                  />
+            </StackLayout>
+            <!-- Product List -->
+            <ListView  VerticalOptions="FillAndExpand"
+                x:Name="ProductListView"
+                HasUnevenRows="True"
+                SeparatorVisibility="Default">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="appMaker:Product">
+                        <ViewCell>
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                Spacing="10"
+                                Padding="10">
+
+                                <!-- Barcode Label -->
+                                <Label 
+                                    Text="{Binding ProudctId}" 
+                                    FontSize="16" 
+                                    VerticalOptions="Center" />
+
+                                <!-- Product Name Label -->
+                                <Label 
+                                    Text="{Binding ProudctName}" 
+                                    FontSize="16" 
+                                    VerticalOptions="Center" />
+
+                                     <Label 
+    Text="{Binding ProudctPrice, StringFormat='{0} جنيه'}" 
+    FontSize="16" 
+    VerticalOptions="Center" />
+
+                                <!-- Quantity Input -->
+                                <Entry  Text="{Binding quant,Mode=TwoWay}" TextChanged="Entry_TextChanged"
+                                   
+                                    Keyboard="Numeric" 
+                                    Placeholder="Quantity" 
+                                    WidthRequest="100" 
+                                    VerticalOptions="Center" />
+                                    <Button Clicked="Delete_Clicked" TextColor="Red" FontSize="20" Text="حذف"></Button>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+<Button  Clicked="CreateBut_Clicked" BackgroundColor="Orange"
+                            x:Name="CreateBut" MinimumHeightRequest="50" FontSize="25" WidthRequest="250"
+                            HorizontalOptions="CenterAndExpand" TextColor="White" BorderWidth="1" Text="اضافة الطلب"
+                            Margin="0,30,0,10" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

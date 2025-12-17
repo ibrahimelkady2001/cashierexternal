@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CashierExternal.MainPage">
+
+
+    <ScrollView>
+        <VerticalStackLayout 
+            Spacing="20" 
+            Padding="20"
+            VerticalOptions="Center">
+
+            <!-- Button 1: Add Order -->
+            <Button x:Name="AddOrder" Clicked="AddOrder_OnClicked"
+                Text="اضافة طلب" 
+                BackgroundColor="#2196F3"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="50"
+                CornerRadius="10"
+                 />
+
+            <!-- Button 2: Product Price -->
+            <Button  x:Name="ProductPrice" Clicked="ProductPrice_Clicked"
+                Text="سعر المنتج" 
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="50"
+                CornerRadius="10"
+             />
+
+            <!-- Button 3: Add Product -->
+            <Button  x:Name="AddProduct" Clicked="AddProduct_Clicked"
+                Text="اضافة منتج" 
+                BackgroundColor="#FF9800"
+                TextColor="White"
+                FontSize="18"
+                HeightRequest="50"
+                CornerRadius="10"
+                />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

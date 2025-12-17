@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cashier.AddProduct"
+               BackgroundColor="#f5f5f5"
+             Title="إضافة منتج جديد">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <!-- Product Name -->
+            <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="اسم المنتج:" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="ProductNameEntry" 
+                           Placeholder="أدخل اسم المنتج" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+             <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="السعر الحقيقي للمنتج"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="RealPriceEntry" 
+                           Placeholder="السعر الحقيقي للمنتج"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+             <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="سعر الجملة للمنتج"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="gomlapriceentry" 
+                           Placeholder="سعر الجملة للمنتج"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+             <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="سعر القطاعي للمنتج" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="PriceEntry" 
+                           Placeholder="سعر القطاعي للمنتج" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+              <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="تمتلك منتج مصغر" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <CheckBox IsChecked="False" x:Name="subcheckbox"  CheckedChanged="subcheckbox_CheckedChanged" 
+                          
+                       
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+            <StackLayout IsVisible="False" x:Name="SubProcutIsVis">
+                 <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="عدد عبوات المنتج المصغر"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="subname" 
+                           Placeholder="اسم المنتج" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+  <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="المنتج المصغر" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="SubProductent" 
+                           Placeholder="رقم الباركود" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                          
+                           Margin="10,0,0,0" />
+                                          <ImageButton  
+                Source="barcode" 
+                BackgroundColor="Transparent"
+                HeightRequest="50"
+                WidthRequest="50"
+                HorizontalOptions="End"
+                Clicked="BarcodeSubCamera_Clicked" />
+                              <Button Text="إنشاء عشوائي" 
+                            FontSize="14" 
+                            TextColor="White" 
+                            BackgroundColor="#4caf50" 
+                            CornerRadius="5" 
+                    
+                            HeightRequest="30" 
+                            Clicked="GenerateRandoSubBarcode_Clicked" 
+                            Margin="10,0,0,0" />
+                             <Button Text="طباعة"  
+                            FontSize="14" 
+                            TextColor="White" 
+                            BackgroundColor="#4caf50" 
+                            CornerRadius="5" 
+                           
+                            HeightRequest="30" 
+                            Clicked="Print_Clicked" 
+                            Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+              <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="عدد عبوات المنتج المصغر"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="SubProductCountent" 
+                           Placeholder="عدد عبوات المنتج المصغر"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+            
+                 <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="نوع العبوة"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="producttypeent"  TextChanged="producttypeent_TextChanged"
+                           Placeholder="نوع العبوة"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+          <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="السعر"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="subpriceent"  
+                           Placeholder="السعر"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           WidthRequest="200" 
+                           Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+       </StackLayout>
+             <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="الكمية"
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="ProductQuantaty" 
+                           Placeholder="الكمية"
+                           FontSize="16" 
+                           TextColor="#333" 
+                          
+                           Margin="10,0,0,0" />
+                           <Entry  Placeholder="" IsVisible="False"
+                           FontSize="16" 
+                           TextColor="#333" 
+                          
+                           Margin="10,0,0,0"  x:Name="SubProuctQuantatity">
+                           </Entry>
+                </HorizontalStackLayout>
+            </Border>
+            <!-- Barcode -->
+            <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="الباركود:" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Entry x:Name="BarcodeEntry" 
+                           Placeholder="أدخل الباركود" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                        
+                           Margin="10,0,0,0" />
+                    <Button Text="إنشاء عشوائي" 
+                            FontSize="14" 
+                            TextColor="White" 
+                            BackgroundColor="#4caf50" 
+                            CornerRadius="5" 
+                           
+                            HeightRequest="30" 
+                            Clicked="GenerateRandomBarcode_Clicked" 
+                            Margin="10,0,0,0" />
+                             <ImageButton  
+                Source="barcode" 
+                BackgroundColor="Transparent"
+                HeightRequest="50"
+                WidthRequest="50"
+                HorizontalOptions="End"
+                Clicked="BarcodeCamera_Clicked" />
+                             <Button Text="طباعة"  
+                            FontSize="14" 
+                            TextColor="White" 
+                            BackgroundColor="#4caf50" 
+                            CornerRadius="5" 
+                            WidthRequest="100" 
+                            HeightRequest="30" 
+                            Clicked="PrintMain_Clicked" 
+                            Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Supplier Picker -->
+            <Border StrokeShape="RoundRectangle 10" 
+                    StrokeThickness="1" 
+                    Stroke="#ccc" 
+                    BackgroundColor="White" 
+                    Padding="10">
+                <HorizontalStackLayout>
+                    <Label Text="المورد:" 
+                           FontSize="16" 
+                           TextColor="#333" 
+                           VerticalTextAlignment="Center" />
+                    <Picker x:Name="SupplierPicker" 
+                            Title="اختر المورد" 
+                            FontSize="16" 
+                            TextColor="#333" 
+                            WidthRequest="200" 
+                            Margin="10,0,0,0" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <!-- Print Barcode Sticker -->
+        
+
+            <!-- Add Product Button -->
+            <Border StrokeShape="RoundRectangle 25" 
+                    StrokeThickness="1" 
+                    Stroke="#fff" 
+                    BackgroundColor="#4caf50" 
+                    Padding="15" 
+                    HorizontalOptions="Center" 
+                    WidthRequest="200">
+                <Button Text="إضافة المنتج"  x:Name="addproductbut"
+                        FontSize="18" 
+                        TextColor="White" 
+                        BackgroundColor="#4caf50" 
+                        BorderColor="#4caf50" 
+                        CornerRadius="25" 
+                        WidthRequest="200" 
+                        HeightRequest="50" 
+                        Clicked="AddProduct_Clicked" />
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
