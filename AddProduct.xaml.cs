@@ -146,13 +146,11 @@ var SubProduct = new Product(){ProudctId = SubProductent.Text, ProudctPrice = do
 	}
 	public async Task AddProductt(Product order)
 	{
-		string url = "http://192.168.1.19:7084/api/AddProduct/";
-
-		using HttpClient client = new HttpClient();
+	
 		var json = JsonSerializer.Serialize(order);
-		var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-		HttpResponseMessage response = await client.PostAsync(url, content);
+
+		HttpResponseMessage response = await ApiWrapper.Post(json, "AddProduct");
 		// response.EnsureSuccessStatusCode();
 		// var st = await response.Content.ReadAsStringAsync();
 		// var product = JsonSerializer.Deserialize<Product>(st);
@@ -160,13 +158,11 @@ var SubProduct = new Product(){ProudctId = SubProductent.Text, ProudctPrice = do
 	}
 	public async Task print(Dictionary<string,string> order)
 	{
-		string url = "http://192.168.1.19:7084/api/print/";
-
-		using HttpClient client = new HttpClient();
+	
 		var json = JsonSerializer.Serialize(order);
-		var content = new StringContent(json, Encoding.UTF8, "application/json");
+		
 
-		HttpResponseMessage response = await client.PostAsync(url, content);
+		HttpResponseMessage response = await ApiWrapper.Post(json, "print");
 		// response.EnsureSuccessStatusCode();
 		// var st = await response.Content.ReadAsStringAsync();
 		// var product = JsonSerializer.Deserialize<Product>(st);
@@ -239,14 +235,18 @@ var SubProduct = new Product(){ProudctId = SubProductent.Text, ProudctPrice = do
 
 	private async void BarcodeCamera_Clicked(object sender, EventArgs e)
 	{
+		   #if IOS || ANDROID
 			var text = await BarcodePage.GetBarcode(this);
 		BarcodeEntry.Text = text;
+		#endif
     }
 
 	private async void BarcodeSubCamera_Clicked(object sender, EventArgs e)
 	{
+		   #if IOS || ANDROID
 		var text = await BarcodePage.GetBarcode(this);
 		SubProductent.Text = text;
+		#endif
     }
 		
 	}

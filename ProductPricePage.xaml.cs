@@ -14,8 +14,10 @@ public partial class ProductPricePage : ContentPage
 
 	private async void OnBarcodeScanClicked(object sender, EventArgs e)
 	{
+		#if ANDROID || IOS
 		var text = await BarcodePage.GetBarcode(this);
 		BarcodeEntry.Text = text;
+		#endif
 	}
 
 	private async void OnSubmitClicked(object sender, EventArgs e)
@@ -46,18 +48,34 @@ public partial class ProductPricePage : ContentPage
 			
 		}
 	}
-	    public  async Task<Product> GetProductInfo( )
-    {
-		 string url = "http://192.168.1.19:7084/api/GetProductInfo/";
-		string barcodeNumber = BarcodeEntry.Text;
-        using HttpClient client = new HttpClient();
-        var json = JsonSerializer.Serialize(new BarcodeModel(){Barcode = barcodeNumber});
-        var content = new StringContent(json, Encoding.UTF8, "application/json");
+public async Task<Product?> GetProductInfo()
+{
+    string barcodeNumber = BarcodeEntry.Text;
+    using HttpClient client = new HttpClient();
 
-        HttpResponseMessage response = await client.PostAsync(url, content);
-		// response.EnsureSuccessStatusCode();
-		var st = await response.Content.ReadAsStringAsync();
-var product = JsonSerializer.Deserialize<Product>(st);
-		return product;
-    }
+    var json = JsonSerializer.Serialize(new BarcodeModel { Barcode = barcodeNumber });
+
+
+    // Common LAN IP prefix (192.168.1.x) — adjust if your network uses 10.x.x.x or 192.168.0.x
+
+
+    // Try all possible IPs on the subnet (e.g. 192.168.1.1 to 192.168.1.255)
+ 
+                HttpResponseMessage response = await ApiWrapper.Post(json, "GetProductInfo");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string st = await response.Content.ReadAsStringAsync();
+                var product = JsonSerializer.Deserialize<Product>(st);
+                if (product != null)
+                {
+
+                    return product;
+                }
+            }
+     
+
+    System.Diagnostics.Debug.WriteLine("❌ Could not reach API on any local IP.");
+    return null;
+}
 }

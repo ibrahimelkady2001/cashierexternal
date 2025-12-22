@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand"
+             x:Class="CashierExternal.ProductsPicker">
+             <StackLayout VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+              <StackLayout Orientation="Horizontal">
+               <Label Text="المنتجات"></Label>
+               <Button Clicked="close_Clicked"  x:Name="close" HorizontalOptions="EndAndExpand" TextColor="Black" BackgroundColor="Transparent" Text="X"></Button>
+
+              </StackLayout>
+              <CollectionView x:Name="col">
+                  <CollectionView.ItemsLayout>
+       <GridItemsLayout Orientation="Vertical"
+                        Span="5" />
+    </CollectionView.ItemsLayout>
+    
+               <CollectionView.ItemTemplate>
+                  <DataTemplate>
+                     <Button x:Name="Product" Clicked="Product_Clicked" BackgroundColor="Orange" TextColor="Black" Padding="30" Text="{Binding ProudctName}"></Button>
+                  </DataTemplate>
+               </CollectionView.ItemTemplate>
+              </CollectionView>
+             </StackLayout>
+
+</ContentView>

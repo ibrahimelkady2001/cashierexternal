@@ -1,3 +1,5 @@
+   #if IOS || ANDROID
+
 using ZXing.Net.Maui.Controls;
 
 namespace CashierExternal;
@@ -41,3 +43,4 @@ await Navigation.PopModalAsync();
 		return text;
 	}
 }
+#endif

@@ -4,6 +4,7 @@ namespace Cashier;
 
 public class Product
 {
+    public string id { get; set; }
 public string ProudctId { get; set; }
 public string ProudctName { get; set; }
 public double ProudctPrice { get; set; }
