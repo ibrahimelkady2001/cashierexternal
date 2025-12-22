@@ -18,7 +18,7 @@ jobs:
     - name: Build App
       run: |
             dotnet workload install maui-windows
-            dotnet build -f net10.0-windows10.0.19041.0 -c Debug
+            dotnet build -f net9.0-windows10.0.19041.0 -c Debug
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
